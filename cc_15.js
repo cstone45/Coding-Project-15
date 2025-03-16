@@ -12,10 +12,21 @@ function addRiskItem(riskName, riskLevel, department) {
     levelParagraph.textContent = riskLevel;
     const departmentLabel = document.createElement("span");
     departmentLabel.textContent = department;
+    const resolveButton = document.createElement("button");
+    resolveButton.textContent = "Resolve"
+    resolveButton.classList.add("resolve-button");
+    resolveButton.addEventListener("click", function() {
+        riskDashboard.removeChild(item);
+    });
     item.appendChild(nameHeading);
     item.appendChild(levelParagraph);
     item.appendChild(departmentLabel);
+    item.appendChild(resolveButton);
     riskDashboard.appendChild(item);
 }
 addRiskItem("Data Breach", "High", "IT");
 addRiskItem("Supply Chain Disruption", "Medium", "Operations");
+
+//Task 3: Removing Risk Items
+//See Modifications to Task 2 Above
+addRiskItem("Market Fluctuations", "High", "Finance");
