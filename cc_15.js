@@ -18,6 +18,20 @@ function addRiskItem(riskName, riskLevel, department) {
     resolveButton.addEventListener("click", function() {
         riskDashboard.removeChild(item);
     });
+    const increaseButton = document.createElement("button");
+    increaseButton.textContent = "Increase Risk Levels";
+    increaseButton.classList.add("increase-button");
+    increaseButton.addEventListener("click", function() {
+        if (item.classList.contains("Low")) {
+            let riskLevel = "Medium"
+        };
+        if (item.classList.contains("Medium")) {
+            let riskLevel = "High"
+        };
+        if (item.classList.contains("High")) {
+            let riskLevel = "High"
+        };
+    });
     function highlightLowRiskItems() {
         const lowRiskItems = document.querySelectorAll(".low-risk");
         Array.from(lowRiskItems).forEach(item => {
@@ -40,10 +54,11 @@ function addRiskItem(riskName, riskLevel, department) {
     item.appendChild(levelParagraph);
     item.appendChild(departmentLabel);
     item.appendChild(resolveButton);
+    item.appendChild(increaseButton);
     riskDashboard.appendChild(item);
-    highlightLowRiskItems();
-    highlightMediumRiskItems();
-    highlightHighRiskItems();
+    highlightLowRiskItems("green");
+    highlightMediumRiskItems("yellow");
+    highlightHighRiskItems("red");
 }
 addRiskItem("Data Breach", "High", "IT");
 addRiskItem("Supply Chain Disruption", "Medium", "Operations");
@@ -56,3 +71,9 @@ addRiskItem("Market Fluctuations", "High", "Finance");
 //See Modifications to Task 2
 addRiskItem("Cybersecurity Threat", "High", "IT");
 addRiskItem("HR Compliance Issue", "Low", "Human Resources");
+
+//Task 5: Implementing Bulk Updates
+//See Above Changes to Task 2
+addRiskItem("Employee Retention", "Low", "HR");
+
+//Task 6: Handling Event Propagation
